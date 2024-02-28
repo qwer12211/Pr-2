@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,7 +18,7 @@ using System.Windows.Navigation;
 
 namespace Pr_2
 {
-    public class JsonSerializationDeserialization
+    public class Serializ
     {
         public static void Serialize<T>(IEnumerable<T> data, string filePath)
         {
@@ -66,31 +66,31 @@ namespace Pr_2
 
         private void SaveNotes()
         {
-            JsonSerializationDeserialization.Serialize(Notes, "notes.json");
+            Serializ.Serialize(Notes, "notes.json");
         }
 
         private void LoadNotes()
         {
             Notes.Clear();
-            IEnumerable<Note> loadedNotes = JsonSerializationDeserialization.Deserialize<Note>("notes.json");
+            IEnumerable<Note> loadedNotes = Serializ.Deserialize<Note>("notes.json");
             if (loadedNotes != null)
             {
                 foreach (var note in loadedNotes)
                 {
                     Notes.Add(note);
                 }
-                date_SelectedDateChanged(null, null);
+                vibordati(null, null);
             }
         }
 
-        private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void vibordati(object sender, SelectionChangedEventArgs e)
         {
             DateTime date = kalendar.SelectedDate ?? DateTime.Today;
             var filteredNotes = Notes.Where(n => n.Date.Date == date.Date).ToList();
             note.ItemsSource = filteredNotes;
         }
 
-        private void create_Click(object sender, RoutedEventArgs e)
+        private void sozdanie(object sender, RoutedEventArgs e)
         {
             string title = title_note.Text.Trim();
             string description = opisanie.Text.Trim();
@@ -100,22 +100,22 @@ namespace Pr_2
             {
                 Note newNote = new Note(title, description, date);
                 Notes.Add(newNote);
-                date_SelectedDateChanged(null, null);
+                vibordati(null, null);
                 SaveNotes();
             }
         }
 
-        private void delete_Click(object sender, RoutedEventArgs e)
+        private void deleteZametki(object sender, RoutedEventArgs e)
         {
             if (selectedNote != null)
             {
                 Notes.Remove(selectedNote);
-                date_SelectedDateChanged(null, null);
+                vibordati(null, null);
                 SaveNotes();
             }
         }
 
-        private void save_Click(object sender, RoutedEventArgs e)
+        private void saveZametki(object sender, RoutedEventArgs e)
         {
             if (selectedNote != null)
             {
@@ -126,7 +126,7 @@ namespace Pr_2
             }
         }
 
-        private void note_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void izmenenie(object sender, SelectionChangedEventArgs e)
         {
             selectedNote = note.SelectedItem as Note;
             if (selectedNote != null)
