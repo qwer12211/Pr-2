@@ -1,4 +1,4 @@
-﻿<Window x:Class="Pr_2.MainWindow"
+<Window x:Class="Pr_2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -22,14 +22,14 @@
             <ColumnDefinition  Width="0.5*"/>
             <ColumnDefinition  Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <DatePicker x:Name="kalendar" Grid.ColumnSpan="2" SelectedDateChanged="date_SelectedDateChanged" Margin="1,0,1,4"/>
+        <DatePicker x:Name="kalendar" Grid.ColumnSpan="2" SelectedDateChanged="vibordati" Margin="1,0,1,4"/>
         <TextBlock Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="3" Text="Название:" TextAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="3" Text="Описание:" TextAlignment="Center"/>
         <TextBox x:Name="title_note" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="1"/>
         <TextBox x:Name="opisanie" Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="1"/>
-        <Button x:Name="delete" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="1" Content="Удалить запись" Margin="10,10,0,10" Click="delete_Click" />
-        <Button x:Name="create" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="1" Content="Создать" Margin="10,10,10,10" Click="create_Click"/>
-        <Button x:Name="save" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="1" Content="Сохранить" Margin="10,10,10,10" Click="save_Click"/>
-        <ListBox x:Name="note" Grid.Column="0" Grid.Row="1" Grid.RowSpan="5" SelectionChanged="note_SelectionChanged" DisplayMemberPath="Title"/>
+        <Button x:Name="delete" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="1" Content="Удалить запись" Margin="10,10,0,10" Click="deleteZametki" />
+        <Button x:Name="sozdaneZametki" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="1" Content="Создать" Margin="10,10,10,10" Click="sozdanie"/>
+        <Button x:Name="savezametki" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="1" Content="Сохранить" Margin="10,10,10,10" Click="saveZametki"/>
+        <ListBox x:Name="note" Grid.Column="0" Grid.Row="1" Grid.RowSpan="5" SelectionChanged="izmenenie" DisplayMemberPath="Title"/>
     </Grid>
 </Window>
